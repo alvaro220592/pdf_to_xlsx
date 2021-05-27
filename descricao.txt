@@ -1,0 +1,11 @@
+Este programa que estou desenvolvendo em Python copia dados específicos de um arquivo pdf e cola em uma planilha de excel.
+O objetivo é automatizar essa ação pra quem copia e cola dados manualmente muitas vezes, pois isso demora e aumenta o risco de erros devido às repetições e ao cansaço mental que dá.
+
+A aplicação lê o texto do arquivo .pdf e usa o módulo pdfplumber pra isso. Entre os módulos que testei, este leu o conteúdo mais fielmente possível ao documento original, porém pra mim apresentou umas falhas de execução ao rodar fora do terminal.
+Após ler o conteúdo, usei o módulo 're', que trabalha com expressões regulares pra analisar padrões de escrita e achar o que você quer lá.
+Ex.:
+O código "favorecido = re.findall(r'Favorecido:(.*?) Inscrição', text)" usa o módulo 're' pra achar todas(findall) ocorrências em que o dado procurado esteja entre "Favorecido:" e "Inscrição" no arquivo chamado de 'text'. Assim, todos favorecidos são listados e isso ocorre com todos os dados, mudando só o padrão de escrita de cada um.
+Dpois, é feito o loop pra adicionar a uma lista vazia os dados de cada pessoa em ordem, então essa lista com 8 dados pra cada pessoa é dividida em sublistas com 8 dados cada, deixando os dados de cada pessoa agrupados. Isso é necessário pois o openpyxl agrega informações em sequência com Favorecido, Inscrição, valor pago, etc.
+Agora entra o módulo openpyxl que trabalha com planilhas, que foi usado pra carregar um arquivo 'excel' já existente, agregar os dados à tabela e salvar o arquivo.
+Obs.: o programa foi feito especificamente para o modelo de escrita dos pdf's usados no exemplo. Com outros modelos, será necessário adaptar tudo.
+Código: github.com/alvaro220592/pdf_to_xlsx
