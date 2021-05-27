@@ -15,22 +15,27 @@ with p.open(f'relatorios-exemplos/{nome}') as pdf:
 
 
 
-# procurando todas as ocorrências de "Pagador" com 're.findall()
+# procurando todas as ocorrências de "Favorecido" com 're.findall()'
 fav = re.findall(r'Favorecido:(.*?) Inscrição', text)
 
 inscricao = re.findall(r'Inscrição: (.*?) Id', text)
 
-# procurando todas as ocorrências de "Valor" com 're.findall()
+# procurando todas as ocorrências de "Valor" com 're.findall()'
 valor_pag = re.findall(r'Valor Pag.: (.*?) Data Pag', text)
 
+# procurando todas as ocorrências de "Data Pag." com 're.findall()'
 data_pagto = re.findall(r'Data Pag.:(.*?) Nr', text)
 
+# procurando todas as ocorrências de "Banco" com 're.findall()'
 banco = re.findall(r'Banco: (.*?) Agência', text)
 
+# procurando todas as ocorrências de "Agência" com 're.findall()'
 agencia = re.findall(r'Agência: (.*?) Conta', text)
 
+# procurando todas as ocorrências de "Conta" com 're.findall()'
 conta = re.findall(r'Conta:(.*?)\n', text)
 
+# procurando todas as ocorrências de "Mensagem" com 're.findall()'
 mensagem = re.findall(r'Mensagem:(.*?) Nr', text)
 
 
@@ -60,20 +65,20 @@ wb = load_workbook('planilha.xlsx')
 # dando o nome plan pra planilha ativa:
 plan = wb.active 
 
-# definindo valores de cabeçalho:
-plan['A1'] = "Favorecido"
-plan['B1'] = "Inscrição"
-plan['C1'] = "Valor Pago"
-plan['D1'] = 'Data de pagto.'
-plan['E1'] = "Banco"
-plan['F1'] = "Agência"
-plan['G1'] = "Conta"
-plan['H1'] = "Mensagem"
+# definindo valores de cabeçalho(não está sendo necessário, pois estamos trabalhando com 'load_workbook()'):
+#plan['A1'] = "Favorecido"
+#plan['B1'] = "Inscrição"
+#plan['C1'] = "Valor Pago"
+#plan['D1'] = 'Data de pagto.'
+#plan['E1'] = "Banco"
+#plan['F1'] = "Agência"
+#plan['G1'] = "Conta"
+#plan['H1'] = "Mensagem"
 
 ################
-# função para dividir a lista completa em 5 partes iguais, ou seja, à cada pessoa pertencem 5 itens da lista(pagador, valor, vencimento, beneficiário e data de pagamento). Se dividirmos a lista geral por 5, teremos sublistas com os dados de cada pessoa a serem inseridos à planilha
+# função para dividir a lista completa em 8 partes iguais, ou seja, à cada pessoa pertencem 8 itens da lista(favorecido, inscrição, valor de pagamento, data de pagamento, banco, agência, conta e mensagem). Se dividirmos a lista geral por 8, teremos sublistas com os dados de cada pessoa a serem inseridos à planilha
 def dividir_lista(lista, n_elementos):
-    # para cada item na lista num alcance de 0 ao número correspondente ao tamanho da lista, num passo determinado(no caso, será 5):
+    # para cada item na lista num alcance de 0 ao número correspondente ao tamanho da lista, num passo determinado(no caso, será 8):
     for i in range(0, len(lista), n_elementos): 
         yield lista[i:i + n_elementos]
   
@@ -93,6 +98,3 @@ for i in x:
 wb.save(filename = 'planilha.xlsx')
 
 print('Dados copiados com sucesso')
-
-#leitura do xlsx
-#lwb = load_workbook(filename = 'faturas.xlsx')
