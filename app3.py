@@ -79,7 +79,8 @@ plan = wb.active
 # função para dividir a lista completa em 8 partes iguais, ou seja, à cada pessoa pertencem 8 itens da lista(favorecido, inscrição, valor de pagamento, data de pagamento, banco, agência, conta e mensagem). Se dividirmos a lista geral por 8, teremos sublistas com os dados de cada pessoa a serem inseridos à planilha
 def dividir_lista(lista, n_elementos):
     # para cada item na lista num alcance de 0 ao número correspondente ao tamanho da lista, num passo determinado(no caso, será 8):
-    for i in range(0, len(lista), n_elementos): 
+    for i in range(0, len(lista), n_elementos):
+        # o yield é como um 'return' mas funciona como um generator, ou seja, cria uma lista de dados que vão sendo consumidos sob demanda
         yield lista[i:i + n_elementos]
   
 # quantos elementos cada lista deve ter
