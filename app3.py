@@ -65,7 +65,7 @@ wb = load_workbook('planilha.xlsx')
 # dando o nome plan pra planilha ativa:
 plan = wb.active 
 
-# definindo valores de cabeçalho(não está sendo necessário, pois estamos trabalhando com 'load_workbook()'):
+# definindo valores de cabeçalho(não está sendo necessário, pois estamos trabalhando com 'load_workbook()', ou seja, um documento já existente e com cabeçalho):
 #plan['A1'] = "Favorecido"
 #plan['B1'] = "Inscrição"
 #plan['C1'] = "Valor Pago"
